@@ -143,10 +143,7 @@ function Initialize-AzSubscription {
             throw (New-Object System.Exception((Get-VstsLocString -Key AZ_MsiFailure), $_.Exception))
         }
         
-        if($scopeLevel -eq "Subscription")
-        {
-            Set-CurrentAzSubscription -SubscriptionId $Endpoint.Data.SubscriptionId -TenantId $Endpoint.Auth.Parameters.TenantId
-        }
+        Set-CurrentAzSubscription -SubscriptionId $Endpoint.Data.SubscriptionId -TenantId $Endpoint.Auth.Parameters.TenantId
     } else {
         throw (Get-VstsLocString -Key AZ_UnsupportedAuthScheme0 -ArgumentList $Endpoint.Auth.Scheme)
     } 
